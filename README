@@ -1,0 +1,5 @@
+1。日志的级别：info DUBUG WANG ERROR
+
+2.springcloud 在调用接口的时候，会经历如下几个组件的配合（消费者--->生产者）
+  接口化请求调用--->根据服务名子,找到服务（Feign）---->(Hystrix)熔断器，远程调用时候，去查看服务能否调用到--->
+  Ribbon(生产者如果配置集群，Ribbon可以做到负载均衡)----->httpClient(根据ip port 来进行访问接口)。
