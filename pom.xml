@@ -5,7 +5,7 @@
     <modules>
         <module>service</module>
         <module>common</module>
-        <module>service_csm</module>
+
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -17,7 +17,8 @@
         <module>service_oss</module>
         <module>service_odv</module>
         <module>service_cms</module>
-        <module>service_msc</module>
+        <module>service_msm</module>
+
     </modules>
 
 
