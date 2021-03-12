@@ -31,12 +31,12 @@ public class EduUserController {
     @Autowired
     private EduUserService eduUserService;
     @PostMapping("login")
-    public String login(@RequestBody UserQuery userQuery){
+    public R login(@RequestBody UserQuery userQuery){
         String code = userQuery.getCode();
         String phone = userQuery.getPhone();
         String password = userQuery.getPassword();
         String nickname = userQuery.getNickname();
-
+        System.out.println(userQuery);
 //        if(StringUtils.isEmpty(code)){
 //            throw new zxException(20001,"验证码为空");
 //        }
@@ -51,6 +51,7 @@ public class EduUserController {
         QueryWrapper<EduUser> wrapper = new QueryWrapper<>();
         wrapper.eq("mobile",phone);
         EduUser user = eduUserService.getOne(wrapper);
+        System.out.println(user.getMobile());
         if(user==null){
             throw new zxException(20001,"登录失败");
         }
@@ -67,7 +68,7 @@ public class EduUserController {
 
         //生成token令牌，多服务登录 进行单点登录
         String token = JwtUtils.getJwtToken(user.getId(), user.getNickname());
-        return token;
+        return R.ok().data("token",token);
     }
     @PostMapping("register")
     public boolean register(@RequestBody UserQuery userQuery){
@@ -97,6 +98,7 @@ public class EduUserController {
     public R getUserInfoByToken(HttpServletRequest request){
         String userId = JwtUtils.getMemberIdByJwtToken(request);
         QueryWrapper<EduUser> wrapper = new QueryWrapper<>();
+        wrapper.eq("id", userId);
         EduUser user = eduUserService.getOne(wrapper);
 
         return R.ok().data("user",user);
