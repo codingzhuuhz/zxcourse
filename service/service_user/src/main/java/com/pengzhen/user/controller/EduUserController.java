@@ -51,7 +51,7 @@ public class EduUserController {
         QueryWrapper<EduUser> wrapper = new QueryWrapper<>();
         wrapper.eq("mobile",phone);
         EduUser user = eduUserService.getOne(wrapper);
-        System.out.println(user.getMobile());
+
         if(user==null){
             throw new zxException(20001,"登录失败");
         }
