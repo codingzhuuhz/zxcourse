@@ -31,6 +31,11 @@ public class EduSubjectController {
         eduSubjectService.uploadExcelService(file,eduSubjectService);
 
     }
+
+    /**
+     * 这个一级二级学科，有待提升
+     * @return
+     */
     @GetMapping("findAllSubject")
     public R findAllSubject(){
         QueryWrapper<EduSubject> wrapper1 = new QueryWrapper<>();

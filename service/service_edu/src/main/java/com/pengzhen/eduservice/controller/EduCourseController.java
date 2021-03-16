@@ -3,10 +3,13 @@ package com.pengzhen.eduservice.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.pengzhen.commonutils.R;
+import com.pengzhen.commonutils.ordervo.CourseOrderVo;
 import com.pengzhen.eduservice.entity.EduCourse;
 import com.pengzhen.eduservice.entity.vo.CourseInfo;
 import com.pengzhen.eduservice.entity.vo.CoursePublishVo;
+import com.pengzhen.eduservice.entity.vo.frontVo.CourseFrontVo;
 import com.pengzhen.eduservice.service.EduCourseService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,6 +76,16 @@ public class EduCourseController {
     public R deleteCourse(@PathVariable String id){
         eduCourseService.deleteCourseService(id);
         return R.ok();
+    }
+    //订单的查询，远程调用，获取课程的信息
+    @PostMapping("getCourse")
+    public CourseOrderVo getCourse(String courseId){
+//        CourseFrontVo courseInfo = eduCourseService.getCourseInfo(courseId);
+        CourseFrontVo courseInfo = eduCourseService.getCourseInfo(courseId);
+
+        CourseOrderVo courseOrderVo = new CourseOrderVo();
+        BeanUtils.copyProperties(courseInfo,courseOrderVo);
+        return courseOrderVo;
     }
 
 }

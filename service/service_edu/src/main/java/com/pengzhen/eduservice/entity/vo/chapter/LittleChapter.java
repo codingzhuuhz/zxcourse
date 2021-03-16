@@ -22,5 +22,14 @@ public class LittleChapter {
         this.title = title;
     }
 
+    public String getVideoSourceId() {
+        return videoSourceId;
+    }
+
+    public void setVideoSourceId(String videoSourceId) {
+        this.videoSourceId = videoSourceId;
+    }
+
     private String title;
+    private String videoSourceId;
 }

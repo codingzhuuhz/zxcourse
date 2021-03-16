@@ -5,6 +5,7 @@ import com.pengzhen.commonutils.R;
 import com.pengzhen.eduservice.entity.EduCourse;
 import com.pengzhen.eduservice.entity.vo.CourseInfo;
 import com.pengzhen.eduservice.entity.vo.CoursePublishVo;
+import com.pengzhen.eduservice.entity.vo.frontVo.CourseFrontVo;
 
 /**
  * <p>
@@ -25,4 +26,8 @@ public interface EduCourseService extends IService<EduCourse> {
     CoursePublishVo getCoursePublishService(String courseId);
 
     void deleteCourseService(String id);
+
+    R pageCourse(long current, long limit);
+
+    CourseFrontVo getCourseInfo(String id);
 }

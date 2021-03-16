@@ -1,7 +1,8 @@
 package com.pengzhen.eduservice.service;
 
-import com.pengzhen.eduservice.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.pengzhen.commonutils.R;
+import com.pengzhen.eduservice.entity.EduTeacher;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface EduTeacherService extends IService<EduTeacher> {
 
+    R pageTeacher(long current, long limit);
 }

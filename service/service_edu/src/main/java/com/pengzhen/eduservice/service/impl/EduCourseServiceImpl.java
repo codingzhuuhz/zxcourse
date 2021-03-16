@@ -1,11 +1,14 @@
 package com.pengzhen.eduservice.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pengzhen.commonutils.R;
 import com.pengzhen.eduservice.entity.EduCourse;
 import com.pengzhen.eduservice.entity.EduCourseDescription;
 import com.pengzhen.eduservice.entity.vo.CourseInfo;
 import com.pengzhen.eduservice.entity.vo.CoursePublishVo;
+import com.pengzhen.eduservice.entity.vo.frontVo.CourseFrontVo;
 import com.pengzhen.eduservice.mapper.EduCourseMapper;
 import com.pengzhen.eduservice.service.EduChapterService;
 import com.pengzhen.eduservice.service.EduCourseDescriptionService;
@@ -17,6 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -114,5 +120,33 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         if(i==0){
             throw  new zxException(20001,"课程删除失败");
         }
+    }
+//前台课程分页显示
+    @Override
+    public R pageCourse(long current, long limit) {
+        Page<EduCourse> pageCourse = new Page<>(current,limit);
+        QueryWrapper<EduCourse> wrapper = new QueryWrapper<>();
+        wrapper.orderByDesc("id");
+        this.baseMapper.selectPage(pageCourse,wrapper);
+        long current1 = pageCourse.getCurrent();
+        List<EduCourse> records = pageCourse.getRecords();
+        long pages = pageCourse.getPages();
+        long total = pageCourse.getTotal();
+        boolean next = pageCourse.hasNext();
+        boolean previous = pageCourse.hasPrevious();
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("total",total);
+        map.put("pages",pages);
+        map.put("current",current1);
+        map.put("next",next);
+        map.put("previous",previous);
+        map.put("courses",records);
+        return R.ok().data(map);
+    }
+//前台课程信息显示
+    @Override
+    public CourseFrontVo getCourseInfo(String id) {
+        return this.baseMapper.getCourseFrontInfo(id);
     }
 }

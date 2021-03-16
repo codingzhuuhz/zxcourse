@@ -33,6 +33,12 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
     private OdvClient odvClient;
     @Autowired
     private EduVideoService eduVideoService;
+
+    /**
+     * 后台章节小节的显示，有待提高
+     * @param courseId
+     * @return
+     */
     @Override
     public List<Chapter> getChapterLittleChapterService(String courseId) {
         QueryWrapper<EduChapter> wrapper1 = new QueryWrapper<>();

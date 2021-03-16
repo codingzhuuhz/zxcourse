@@ -5,11 +5,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pengzhen.commonutils.JwtUtils;
 import com.pengzhen.commonutils.MD5;
 import com.pengzhen.commonutils.R;
+import com.pengzhen.commonutils.ordervo.UserOrderVo;
 import com.pengzhen.servicebase.exception.zxException;
 import com.pengzhen.user.entity.EduUser;
 import com.pengzhen.user.entity.vo.UserQuery;
 import com.pengzhen.user.service.EduUserService;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -102,6 +104,14 @@ public class EduUserController {
         EduUser user = eduUserService.getOne(wrapper);
 
         return R.ok().data("user",user);
+    }
+    //生成订单 远程调用的接口 获取用户的信息
+    @PostMapping("getUserInfo/{id}")
+    public UserOrderVo getUserInfo(String id){
+        EduUser user = eduUserService.getById(id);
+        UserOrderVo userOrderVo = new UserOrderVo();
+        BeanUtils.copyProperties(user,userOrderVo);
+        return userOrderVo;
     }
 }
 

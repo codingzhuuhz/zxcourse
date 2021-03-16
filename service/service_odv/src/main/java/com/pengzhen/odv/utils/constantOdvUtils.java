@@ -84,14 +84,15 @@ public class constantOdvUtils implements InitializingBean {
         }
     }
     //获取视频播放的凭证
-    public static void getUploadFileAuth() throws Exception{
+    public static String getUploadFileAuth(String viceoSourceId) throws Exception{
 
         DefaultAcsClient client = initVodClient("LTAI4GBCEnQ1AWBZ87ehv15e", "DrdPIDzOSkLHeEJWHehXhMqmvAUR6Y");
         GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
         GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
-        request.setVideoId("b4a99bfcf303412582e3cdb13df6dcf6");
+        request.setVideoId(viceoSourceId);
         response = client.getAcsResponse(request);
-        System.out.print("UploadAuth = " + response.getPlayAuth() + "\n");
+        return response.getPlayAuth();
+//        System.out.print("UploadAuth = " + response.getPlayAuth() + "\n");
     }
     //获取aliyun中上传视频的信息
     public static void getUploadFileInfo(){

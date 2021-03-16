@@ -1,4 +1,4 @@
-package com.pengzhen.eduservice.controller;
+package com.pengzhen.eduservice.controller.front;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pengzhen.eduservice.entity.EduCourse;
