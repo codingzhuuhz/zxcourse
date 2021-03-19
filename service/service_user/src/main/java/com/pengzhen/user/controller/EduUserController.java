@@ -107,11 +107,17 @@ public class EduUserController {
     }
     //生成订单 远程调用的接口 获取用户的信息
     @PostMapping("getUserInfo/{id}")
-    public UserOrderVo getUserInfo(String id){
+    public UserOrderVo getUserInfo(@PathVariable String id){
         EduUser user = eduUserService.getById(id);
         UserOrderVo userOrderVo = new UserOrderVo();
         BeanUtils.copyProperties(user,userOrderVo);
         return userOrderVo;
+    }
+    //生成每天注册的人数 远程接口调用 用于数据统计模块
+    @GetMapping("getUserStatistic/{day}")
+    public R getUserStatistic(@PathVariable String day){
+        int count = eduUserService.getUserStatService(day);
+        return  R.ok().data("count",count);
     }
 }
 

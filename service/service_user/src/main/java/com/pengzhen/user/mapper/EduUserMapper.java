@@ -1,7 +1,7 @@
 package com.pengzhen.user.mapper;
 
-import com.pengzhen.user.entity.EduUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.pengzhen.user.entity.EduUser;
 
 /**
  * <p>
@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface EduUserMapper extends BaseMapper<EduUser> {
 
+    int getUserStatService(String day);
 }

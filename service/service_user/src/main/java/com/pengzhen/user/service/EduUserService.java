@@ -1,7 +1,7 @@
 package com.pengzhen.user.service;
 
-import com.pengzhen.user.entity.EduUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.pengzhen.user.entity.EduUser;
 
 /**
  * <p>
@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface EduUserService extends IService<EduUser> {
 
+    int getUserStatService(String day);
 }

@@ -11,7 +11,7 @@
             where ec.id=#{courseId};
     </select>
     <select id="getCourseFrontInfo" parameterType="String" resultType="com.pengzhen.eduservice.entity.vo.frontVo.CourseFrontVo">
-        select ec.title,ec.price,ec.lesson_num as lessonNum,ec.cover,ec.buy_count as buyCount,ec.view_count as viewCount,
+        select ec.title,ec.id,ec.price,ec.lesson_num as lessonNum,ec.cover,ec.buy_count as buyCount,ec.view_count as viewCount,
             ecd.description,et.name as teacherName
             from edu_course ec left join edu_course_description ecd on ec.id = ecd.id
             left join edu_teacher et on ec.teacher_id = et.id

@@ -146,7 +146,7 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
     }
 //前台课程信息显示
     @Override
-    public CourseFrontVo getCourseInfo(String id) {
-        return this.baseMapper.getCourseFrontInfo(id);
+    public CourseFrontVo getCourseInfo(String courseId) {
+        return this.baseMapper.getCourseFrontInfo(courseId);
     }
 }

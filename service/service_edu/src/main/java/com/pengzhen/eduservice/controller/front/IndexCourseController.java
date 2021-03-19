@@ -33,7 +33,7 @@ public class IndexCourseController {
        return result;
     }
     /**
-     *这个前台课程章节 小节有待 提升
+     *这个前台课程章节 小节     有待提升
      */
     @GetMapping("getCourse/{courseId}")
     public R getCourse(@PathVariable String courseId){
@@ -72,4 +72,5 @@ public class IndexCourseController {
         }
         return R.ok().data("course",course).data("chapterList",chapterList);
     }
+
 }

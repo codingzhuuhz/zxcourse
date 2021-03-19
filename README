@@ -1,10 +1,25 @@
+后端：SpringBoot+SpringCloud+Mybatis-Plus+HttpClient+Mysql+Maven+EasyExcel+nginx
+前端：Vue.js+elementui+NUXT+Echarts
+
 1。日志的级别：info DUBUG WANG ERROR
 
 2.springcloud 在调用接口的时候，会经历如下几个组件的配合（消费者--->生产者）
   接口化请求调用--->根据服务名子,找到服务（Feign）---->(Hystrix)熔断器，远程调用时候，去查看服务能否调用到--->
   Ribbon(生产者如果配置集群，Ribbon可以做到负载均衡)----->httpClient(根据ip port 来进行访问接口)。
+  Hystrix熔断器 一个模块调用另外一个模块  无响应时候 进行熔断处理
+  GateWay服务网关--->作用是进行请求转发,负载均衡,权限控制。用来替代nginx
+     网关做负载均衡-->轮训 权重 最少请求时间
 3.一般来说，把经常进行查询，不经常修改，不是特别重要的数据数据放到redis作为缓存
 有一个遗留问题？？？？想不起来
 4.d单点登录 session方式 使用cookie+redis实现 使用token的方式
+5.使用canal进行数据同步
+ 步骤：1.修改linux中队的mysql数据库的配置
+       （1）检查binlog功能是否开启show variables like 'log_bin';
+           如果为off 则 Vi /etc/my.cnf
+            最追加一个内容.....
+        ()
+
+6.分权分域（权限管理）
+
 
 

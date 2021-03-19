@@ -1,7 +1,9 @@
 package com.pengzhen.order.service;
 
-import com.pengzhen.order.entity.PayLog;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.pengzhen.order.entity.PayLog;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -13,4 +15,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface PayLogService extends IService<PayLog> {
 
+    Map createQRcode(String orderNo);
+
+    Map<String, String> queryPayStatus(String orderNo);
+
+    void updateOrder(Map<String,String> map);
 }

@@ -1,9 +1,9 @@
 package com.pengzhen.user.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pengzhen.user.entity.EduUser;
 import com.pengzhen.user.mapper.EduUserMapper;
 import com.pengzhen.user.service.EduUserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class EduUserServiceImpl extends ServiceImpl<EduUserMapper, EduUser> implements EduUserService {
 
+    @Override
+    public int getUserStatService(String day) {
+        return this.baseMapper.getUserStatService(day);
+    }
 }

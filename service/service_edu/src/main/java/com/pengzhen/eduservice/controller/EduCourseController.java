@@ -78,11 +78,11 @@ public class EduCourseController {
         return R.ok();
     }
     //订单的查询，远程调用，获取课程的信息
-    @PostMapping("getCourse")
-    public CourseOrderVo getCourse(String courseId){
+    @PostMapping("getCourse/{courseId}")
+    public CourseOrderVo getCourse(@PathVariable String courseId){
 //        CourseFrontVo courseInfo = eduCourseService.getCourseInfo(courseId);
         CourseFrontVo courseInfo = eduCourseService.getCourseInfo(courseId);
-
+//        System.out.println(courseInfo.getTeacherName());
         CourseOrderVo courseOrderVo = new CourseOrderVo();
         BeanUtils.copyProperties(courseInfo,courseOrderVo);
         return courseOrderVo;
